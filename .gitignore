@@ -1,0 +1,7 @@
+.idea/
+__pycache__/
+testvenv/
+trash/
+txt/
+information.json
+set_info.py
