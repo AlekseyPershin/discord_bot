@@ -13,7 +13,7 @@ class Reactions(commands.Cog):
         """Реакция на пост в showroom"""
         if ctx.channel.name == 'showroom':
             if len(ctx.attachments) > 0:
-                # await asyncio.sleep(10)
+                await asyncio.sleep(10)
                 main_channel = self.client.get_channel(self.main_channel_id) # Канал
                 with open('txt/showroom_reactions.txt', 'r', encoding='utf-8') as f_obj:
                     data = f_obj.readlines()
