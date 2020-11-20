@@ -20,4 +20,4 @@ class Reactions(commands.Cog):
                     say = random.choice(data)
                     if '@name' in say:
                         say = say.replace('@name', ctx.author.mention)
-                    await main_channel.send(f'{ctx.jump_url} \n {say}')
+                    await main_channel.send(f'{ctx.jump_url} \n {say} \n {ctx.attachments[0].url}')
