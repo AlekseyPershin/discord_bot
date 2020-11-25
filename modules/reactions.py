@@ -1,4 +1,4 @@
-import random, asyncio
+import random, asyncio, os, pathlib
 from discord.ext import commands
 
 class Reactions(commands.Cog):
@@ -15,7 +15,8 @@ class Reactions(commands.Cog):
             if len(ctx.attachments) > 0:
                 await asyncio.sleep(10)
                 main_channel = self.client.get_channel(self.main_channel_id) # Канал
-                with open('txt/showroom_reactions.txt', 'r', encoding='utf-8') as f_obj:
+                file = pathlib.Path(__file__).parent.parent.joinpath('txt').joinpath('showroom_reactions.txt')
+                with file.open('r', encoding='utf-8') as f_obj:
                     data = f_obj.readlines()
                     say = random.choice(data)
                     if '@name' in say:
