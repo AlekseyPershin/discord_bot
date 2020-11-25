@@ -1,4 +1,4 @@
-import random, asyncio, os, pathlib
+import random, asyncio, pathlib
 from discord.ext import commands
 
 class Reactions(commands.Cog):

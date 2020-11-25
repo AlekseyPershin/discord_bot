@@ -1,4 +1,4 @@
-import asyncio, datetime, json
+import asyncio, datetime, pathlib
 
 async def dailik(client, main_channel_id):
     await client.wait_until_ready()
@@ -13,7 +13,8 @@ async def dailik(client, main_channel_id):
                 await channel.send(f'@everyone ДЕЙЛИК!!!')
                 await asyncio.sleep(60)
             else:
-                with open('txt/log.txt', 'a') as f_obj:
+                log_file = pathlib.Path(__file__).parent.parent.joinpath('txt').joinpath('log.txt')
+                with log_file.open('a') as f_obj:
                     f_obj.write(str(datetime.datetime.today().time()) + '\n')
                 await asyncio.sleep(60)
         else:

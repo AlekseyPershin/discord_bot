@@ -1,11 +1,10 @@
-import asyncio, json, random, re, os, pathlib
+import asyncio, json, random, re, pathlib
 from discord.ext import commands
 import modules.dailik, modules.comands, modules.reactions, modules.utilites
 
 
 client = commands.Bot(command_prefix='!')
 
-info_file = os.path.normpath(os.path.dirname(__file__)) + os.sep + 'information.json'
 info_file = pathlib.Path(__file__).parent.joinpath('information.json')
 with info_file.open('r', encoding='utf-8') as f_obj:
     data = json.load(f_obj)
