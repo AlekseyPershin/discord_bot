@@ -14,7 +14,7 @@ async def dailik(client, main_channel_id):
                 await asyncio.sleep(60)
             else:
                 log_file = pathlib.Path(__file__).parent.parent.joinpath('txt').joinpath('log.txt')
-                with log_file.open('a') as f_obj:
+                with log_file.open('w') as f_obj:
                     f_obj.write(str(datetime.datetime.today().time()) + '\n')
                 await asyncio.sleep(60)
         else:
