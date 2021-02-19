@@ -13,7 +13,7 @@ class Reactions(commands.Cog):
         """Реакция на пост в showroom"""
         if ctx.channel.name == 'showroom':
             if len(ctx.attachments) > 0:
-                await asyncio.sleep(10) # Сообщение отправляется через 10 секунд после появления в шоуруме
+                # await asyncio.sleep(10) # Сообщение отправляется через 10 секунд после появления в шоуруме
                 main_channel = self.client.get_channel(self.main_channel_id) # Канал
                 file = pathlib.Path(__file__).parent.parent.joinpath('txt').joinpath('showroom_reactions.txt')
                 with file.open('r', encoding='utf-8') as f_obj:
@@ -22,4 +22,23 @@ class Reactions(commands.Cog):
                     if '@name' in say:
                         say = say.replace('@name', ctx.author.mention)
                     message = ctx.content # Сообщение автора
-                    await main_channel.send(f'{ctx.jump_url} \n >{message}\n {say} {ctx.attachments[0].url}')
+                    if len(str(message)) != 0:
+                        await main_channel.send(f'{ctx.jump_url} \n > {message}\n {say} {ctx.attachments[0].url}')
+                    else:
+                        await main_channel.send(f'{ctx.jump_url} \n {say} {ctx.attachments[0].url}')
+
+        elif ctx.channel.id == 803622894189543425:
+            if len(ctx.attachments) > 0:
+                # await asyncio.sleep(10) # Сообщение отправляется через 10 секунд после появления в шоуруме
+                main_channel = self.client.get_channel(811645450531897404) # Канал robotalk
+                file = pathlib.Path(__file__).parent.parent.joinpath('txt').joinpath('showroom_reactions.txt')
+                with file.open('r', encoding='utf-8') as f_obj:
+                    data = f_obj.readlines()
+                    say = random.choice(data) # Случайная фраза из txt/showroom_reactions.txt
+                    if '@name' in say:
+                        say = say.replace('@name', ctx.author.mention)
+                    message = ctx.content # Сообщение автора
+                    if len(str(message)) != 0:
+                        await main_channel.send(f'{ctx.jump_url} \n > {message}\n {say} {ctx.attachments[0].url}')
+                    else:
+                        await main_channel.send(f'{ctx.jump_url} \n {say} {ctx.attachments[0].url}')
